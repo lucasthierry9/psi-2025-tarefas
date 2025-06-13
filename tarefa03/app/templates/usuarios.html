@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+</head>
+<body>
+    <h1>Usuários</h1>
+    {% for usuario in usuarios %}
+    <p><strong>Nome:</strong> {{ usuario.nome }} | <strong>Matrícula:</strong> {{ usuario.matricula }} | <strong>Idade:</strong> {{ usuario.idade }} | <strong>Cidade:</strong> {{usuario.cidade}}</p>
+    {% endfor %}
+    <a href="{% url 'index' %}">Ir para Página Inicial</a>
+</body>
+</html>
