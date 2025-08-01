@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ blog.titulo }} - {% block title %}{% endblock title %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+    <header class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
+                <h1 class="mb-0" style="font-family: 'Segoe UI', sans-serif;">{{ blog.titulo }}</h1>
+            </a>
+        </div>
+    </header>
+
+    {% block content %}
+        <p>Conteudo</p>
+    {% endblock content %}
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            {% if blog.desenvolvedor %}
+            <p class="mb-1">Desenvolvido por <strong>{{ blog.desenvolvedor }}</strong></p>
+            {% endif %}
+            <p class="mb-0">
+                <a class="text-white text-decoration-none">{{ blog.email }}</a>
+                {% if blog.github %}
+                <a href="{{ blog.github }}" target="_blank" class="text-white text-decoration-none">GitHub</a>
+                {% endif %}
+                {% if blog.linkedin %}
+                <a href="{{ blog.linkedin }}" target="_blank" class="text-white text-decoration-none">LinkedIn</a>
+                {% endif %}
+            </p>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}{{ titulo }}{% endblock title %}
+{% block content %}
+<div class="container my-4" style="flex: 1;">
+    {% if postagens %}
+    {% for post in postagens %}
+        <a href="{% url 'post' post.id  %}" class="text-decoration-none text-dark">
+            <div class="card shadow-sm mt-3">
+                <img src="{{ post.imagem.url }}" class="card-img-top" alt="Imagem do post">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.titulo }}</h5>
+                    <p class="text-muted mb-2">{{ post.data }}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            Nenhuma postagem existente. Acesse o <a href="/admin/" class="alert-link">admin</a> para adicionar.
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}
